@@ -18,11 +18,10 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('user_received_reminder');
             $table->dateTime('remind_at')->nullable();
-            $table->string('latitude')->nullable();
-            $table->string('longitude')->nullable();
-            $table->timestamps('created_at');
-            $table->boolean('completed');
-            $table->boolean('repeted');
+            $table->decimal('latitude', 10, 7)->nullable();
+            $table->decimal('longitude', 10, 7)->nullable();
+            $table->boolean('completed')->default(false);
+            $table->boolean('repeted')->default(false);
         });
     }
 
