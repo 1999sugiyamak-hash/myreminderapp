@@ -9,6 +9,7 @@ on:
     - opened
     branches:
     - main
+  workflow_dispatch:
 
 jobs:
   laravel_test:
