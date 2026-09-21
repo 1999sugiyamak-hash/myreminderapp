@@ -29,31 +29,31 @@ steps:
 - name: Checkout
   uses: action/checkout@v4
 
--name: Set up PHP
+- name: Set up PHP
   uses: shivammathur/setup-php@v2
   with:
     php-version: '8.4'
     extensions: mbstring,pdo_mysql
     coverage: none
 
--name: Install Composer dependencies
+- name: Install Composer dependencies
   run: composer install --no-interaction --prefer-dist
 
--name: Prepare environment
+- name: Prepare environment
   run: cp .env.example env
 
--name: Genetate application key
+- name: Genetate application key
   run: php artsian key:generate
 
--name: Configure database
+- name: Configure database
   run: |
     sed -i 's/^DB_HOST=.*/DB_HOST=127.0.0.1/' .env
     sed -i 's/^DB_DATABASE=.*/DB_DATABASE=laravel' .env
     sed -i 's/^DB_USERNAME=.*/DB_USERNAME=sail' .env
     sed -i 's/^DB_PASSWORD=.*/DB_PASSWORD=password/' .env
 
--name: Run migrations
+- name: Run migrations
   run: php artsian migrate --force
 
--name: Run tests
+- name: Run tests
   run: php artsian test
