@@ -1,7 +1,9 @@
 <!-- The view for creating reminders -->
-
+<head>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
 <h1>Create Reminder</h1>
-<form method="POST" action="/reminders">
+<form method="POST" action="/reminders" width="100%">
     @csrf
     <!-- <div>
         <label for="created_user">Name</label>
@@ -22,6 +24,12 @@
     <div>
         <label for="remind_at">DateTime received reminder</label>
         <input type="datetime-local" id="remind_at" name="remind_at" />
+    </div>
+    <div>
+        <label for="map">Map</label>
+        <div id="map" style="height: 400px"></div>
+        <input hidden id="latitude" name="latitude" />
+        <input hidden id="longitude" name="longitude" />
     </div>
     <div>
         <input type="submit" value="Create reminder!" />
