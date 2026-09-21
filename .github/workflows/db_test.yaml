@@ -40,17 +40,17 @@ steps:
   run: composer install --no-interaction --prefer-dist
 
 -name: Prepare environment
- run: cp .env.example env
+  run: cp .env.example env
 
 -name: Genetate application key
   run: php artsian key:generate
 
 -name: Configure database
   run: |
-  sed -i 's/^DB_HOST=.*/DB_HOST=127.0.0.1/' .env
-  sed -i 's/^DB_DATABASE=.*/DB_DATABASE=laravel' .env
-  sed -i 's/^DB_USERNAME=.*/DB_USERNAME=sail' .env
-  sed -i 's/^DB_PASSWORD=.*/DB_PASSWORD=password/' .env
+    sed -i 's/^DB_HOST=.*/DB_HOST=127.0.0.1/' .env
+    sed -i 's/^DB_DATABASE=.*/DB_DATABASE=laravel' .env
+    sed -i 's/^DB_USERNAME=.*/DB_USERNAME=sail' .env
+    sed -i 's/^DB_PASSWORD=.*/DB_PASSWORD=password/' .env
 
 -name: Run migrations
   run: php artsian migrate --force
