@@ -22,6 +22,7 @@ return new class extends Migration
             $table->decimal('longitude', 10, 7)->nullable();
             $table->boolean('completed')->default(false);
             $table->boolean('repeted')->default(false);
+            $table->timestamps();
         });
     }
 
