@@ -7,12 +7,16 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Reminders;
+use Illuminate\Database\Eloquent\Model;
+use Mockery\Mock;
 
-#[Fillable(['name', 'email', 'password'])]
-#[Hidden(['password', 'remember_token'])]
-class User extends Authenticatable
+// #[Fillable(['name', 'email', 'password'])]
+// #[Hidden(['password', 'remember_token'])]
+class User extends Model
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
@@ -25,8 +29,17 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'id'=>'number',
+            'name'=>'string',
         ];
     }
+
+    protected function createReminders(): HasMany{
+        return $this->hasMany(Reminders::class, 'created_user', 'id');
+    }
+
+    protected function receivedReminders(): HasMany{
+        return $this->hasMany(Reminders::class, 'user_received_reminder', 'id');
+    }
 }
+
