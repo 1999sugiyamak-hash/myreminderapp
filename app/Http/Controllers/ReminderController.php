@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Reminders;
+use Illuminate\Support\Facades\Log;
 
 class ReminderController extends Controller
 {
@@ -12,5 +13,38 @@ class ReminderController extends Controller
         $reminders = Reminders::all();
         
         return view('reminders.index', compact('reminders'));
+    }
+
+    // display create reminder page
+    public function create(){
+        return view('reminders.create');
+    }
+
+    // store reminder data to reminders DB
+    public function store(Request $request){
+      
+        Log::info('start', $request->all());
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'remind_at' => 'nullable|date',
+        ]);
+        Log::info('validate finish');
+        Reminders::create([
+            'created_user' => 1, // mock implementation
+            'title' => $validated['title'],
+            'description' => $validated['description'],
+            'user_received_reminder' => 1, // mock implementation
+            'remind_at' => $validated['remind_at'],
+            'latitude' => null,
+            'longitude' => null,
+            'completed' => false,
+            'repeated' => false,
+            'updated_at' => now(),
+            'created_at'
+        ]);
+        Log::info('finish');
+
+        return redirect('/reminders');
     }
 }
