@@ -2,7 +2,7 @@
 
 <head>
     @vite (['resources/js/app.js'])
-    <script src="http://maps.google.com/maps/api/js?key=AIzaSyC4ozyBlxLyvaAaIzLur8RN1c7RkPqYUYk&language=en" async defer></script>
+    <script src="http://maps.google.com/maps/api/js?key={{ config( 'services.google_map.api_key' )}}&language=en" async defer></script>
 </head>
 <h1>Create Reminder</h1>
 <!-- TODO: enable resposible design -->
