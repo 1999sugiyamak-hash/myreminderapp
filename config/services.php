@@ -37,6 +37,11 @@ return [
 
     'google_map' => [
         'api_key' => env('GOOGLE_MAP_API_KEY'),
-    ]
+    ],
 
+    'web_push' => [
+        'project' => env('VAPID_PROJECT'),
+        'public_key' => env('VAPID_PUBLIC_KEY'),
+        'private_key' => env('VAPID_PRIVATE_KEY')
+    ]
 ];
