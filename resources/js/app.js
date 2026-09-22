@@ -1,23 +1,21 @@
-//
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
+    
+function createMap(){
+    const center = {
+        lat: 35.7379, 
+        lng: 139.6543,
+    };
+    const options = {
+        zoom: 17,
+        center: center,
+    }
+    const map = new google.maps.Map(document.getElementById("map"), options);
+}
 
-window.L = L;
+function displayGoogleMap() {
+    if(window.google && window.google.maps){
+        createMap();
+    }
+}
 
 const mapElement = document.getElementById("map");
-console.log('js')
-if(mapElement) {
-    const map = L.map('map').setView([35.7379, 139.6543], 1);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
-
-    map.on('click', function(e) {
-        const latitude = e.latlng.lat;
-        const longitude = e.latlng.lng;
-
-        document.getElementById('latitude').value = latitude;
-        document.getElementById('longitude').value = longitude;
-    })
-}
+if(mapElement) displayGoogleMap();
