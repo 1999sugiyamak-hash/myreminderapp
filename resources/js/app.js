@@ -13,7 +13,7 @@ function createMap() {
     let marker = null;
     map.addListener('click', function (e) {
 
-        // round lat and lng to 7 decimal places 
+        // Round lat and lng to 7 decimal places 
         const shift = 10 ** 7;
         const latitude = Math.floor(e.latLng.lat() * shift) / shift;
         const longitude = Math.floor(e.latLng.lng() * shift) / shift;
@@ -21,7 +21,7 @@ function createMap() {
         document.getElementById('latitude').value = latitude;
         document.getElementById('longitude').value = longitude;
 
-        // put marker on Google map
+        // Put marker on Google map
         if (marker) {
             marker.setPosition(e.latLng);
         } else {
