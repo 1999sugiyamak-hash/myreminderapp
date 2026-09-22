@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Reminders;
-use Illuminate\Support\Facades\Log;
 
 class ReminderController extends Controller
 {
@@ -22,7 +21,6 @@ class ReminderController extends Controller
 
     // store reminder data to reminders DB
     public function store(Request $request){
-        Log::info($request['latitude']);
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
