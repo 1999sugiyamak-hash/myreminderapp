@@ -2,6 +2,7 @@
 
 <head>
     @vite (['resources/js/app.js'])
+    @extends('layouts.app')
     <script src="http://maps.google.com/maps/api/js?key={{ config( 'services.google_map.api_key' )}}&language=en" async defer></script>
 </head>
 <h1>Create Reminder</h1>
