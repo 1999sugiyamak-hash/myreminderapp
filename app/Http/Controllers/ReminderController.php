@@ -7,20 +7,23 @@ use App\Models\Reminders;
 
 class ReminderController extends Controller
 {
-    // get reminders index
-    public function index(){
-        $reminders = Reminders::all();
-        
+    // Get reminders index
+    public function index()
+    {
+        $reminders = Reminders::where('completed', false)->get();
+
         return view('reminders.index', compact('reminders'));
     }
 
-    // display create reminder page
-    public function create(){
+    // Display create reminder page
+    public function create()
+    {
         return view('reminders.create');
     }
 
-    // store reminder data to reminders DB
-    public function store(Request $request){
+    // Store reminder data to reminders DB
+    public function store(Request $request)
+    {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
@@ -42,6 +45,13 @@ class ReminderController extends Controller
             'updated_at' => now(),
             'created_at'
         ]);
+
+        return redirect('/reminders');
+    }
+
+    // Update reminder's completed flag to true
+    public function complete(int $id) {
+        Reminders::where('id', $id)->update(['completed' => true]);
 
         return redirect('/reminders');
     }
