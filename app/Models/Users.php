@@ -8,15 +8,13 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Reminders;
 use Illuminate\Database\Eloquent\Model;
-use Mockery\Mock;
 
 // #[Fillable(['name', 'email', 'password'])]
 // #[Hidden(['password', 'remember_token'])]
-class User extends Model
+class Users extends Model
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
@@ -26,13 +24,13 @@ class User extends Model
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'id'=>'number',
-            'name'=>'string',
-        ];
-    }
+    protected $fillable = [
+        'name',
+        'endpoint',
+        'key',
+        'token',
+        'encoding',
+    ];
 
     protected function createReminders(): HasMany{
         return $this->hasMany(Reminders::class, 'created_user', 'id');

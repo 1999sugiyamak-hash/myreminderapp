@@ -2,10 +2,8 @@
 
 namespace App\Models;
 
-use DateTime;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\Models\User;
 
 class Reminders extends Model
 {
@@ -30,11 +28,11 @@ class Reminders extends Model
         'repeted'=>'boolean',
     ];
 
-    protected function createdUser(): BelongsTo{
-        return $this->belongsTo(User::class, 'created_user', 'id');
+    public function createdUser(): BelongsTo{
+        return $this->belongsTo(Users::class, 'created_user', 'id');
     }
 
-    protected function receivedUser(): BelongsTo{
-        return $this->belongsTo(User::class, 'user_received_remainser', 'id');
+    public function receivedUser(): BelongsTo{
+        return $this->belongsTo(Users::class, 'user_received_reminder', 'id');
     }
 }

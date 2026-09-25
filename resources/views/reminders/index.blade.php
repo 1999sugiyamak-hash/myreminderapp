@@ -1,5 +1,5 @@
 <!-- The view for reminders index -->
-
+@extends('layouts.app')
 <h1>All Reminders</h1>
 
 @foreach ($reminders as $reminder)
