@@ -22,12 +22,12 @@ Route::post('/reminders', [ReminderController::class, 'store']);
 Route::patch('/reminders/complete/{id}', [ReminderController::class, 'complete']);
 
 
-//Users
-// display users index page
+// Users
+// Display users index page
 Route::get('/users', [UsersController::class, 'index']);
 
-// display create users page
+// Display create users page
 Route::get('/users/create', [UsersController::class, 'create']);
 
-// store users information to users DB
+// Store users information to users DB
 Route::post('/users', [UsersController::class, 'store']);

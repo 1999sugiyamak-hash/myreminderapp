@@ -14,6 +14,12 @@
     <form method="POST" action="/users" id="create-user-form">
         @csrf
         <div>
+            <input id="endpoint" name="endpoint" hidden />
+            <input id="key" name="key" hidden />
+            <input id="token" name="token" hidden />
+            <input id="encoding" name="encoding" hidden />
+        </div>
+        <div>
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required />
         </div>
@@ -26,58 +32,37 @@
             const registration = await navigator.serviceWorker.register('/sw.js');
             await navigator.serviceWorker.ready;
 
-            console.log(registration);
             const permission = await Notification.requestPermission();
             if (permission !== 'granted') {
                 alert('Please enable notifications');
                 return;
             }
 
-            // // Get webpush data
-            // const subscription = await registration.pushManager.subscribe({
-            //     userVisibleOnly: true,
-            //     applicationServerKey: window.validPublicKey,
-            // })
-            // const pushData = subscription.toJSON();
-
-            // console.log(pushData);
-
-            // Submit webpush data with user name
             try {
                 const form = document.getElementById('create-user-form')
+
                 form.addEventListener('submit', async function(e) {
                     // Get webpush data
                     e.preventDefault();
+                    
                     const subscription = await registration.pushManager.subscribe({
                         userVisibleOnly: true,
                         applicationServerKey: window.validPublicKey,
                     })
                     const pushData = subscription.toJSON();
 
-                    console.log(pushData);
+                    const encoding = (PushManager.supportedContentEncodings || ['aesgcm'])[0];
 
-                    await fetch({
-                        method: 'POST',
-                        body: JSON.stringify({
-                            endpoint: pushData.endpoint,
-                            key: pushData.keys.p256ph,
-                            auth: pushData.keys.auth,
-                        }),
-                    });
+                    document.getElementById('endpoint').value = pushData.endpoint;
+                    document.getElementById('key').value = pushData.keys.p256dh;
+                    document.getElementById('token').value = pushData.keys.auth;
+                    document.getElementById('encoding').value = encoding;
+
+                    form.submit();
                 })
             } catch (e) {
                 console.log(e);
             }
-            // await fetch(form.action, {
-            //     method: 'POST',
-            //     body: JSON.stringify({
-            //         endpoint: pushData.endpoint,
-            //         key: pushData.keys.p256ph,
-            //         auth: pushData.keys.auth,
-            //     }),
-            // });
-            // console.log(pushData.endpoint);
-            // console.log(pushData.keys);
         }
 
         registerUser();
