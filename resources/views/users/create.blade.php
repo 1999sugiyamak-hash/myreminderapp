@@ -1,6 +1,7 @@
 <!-- The view for creating users -->
 
 <head>
+    @vite(['resources/css/app.css'])
     @extends('layouts.app')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script>
@@ -9,7 +10,7 @@
 </head>
 
 <body>
-    <h1>Create User</h1>
+    <h1 class="header">Create User</h1>
     <!-- TODO: enable resposible design -->
     <form method="POST" action="/users" id="create-user-form">
         @csrf
@@ -19,11 +20,11 @@
             <input id="token" name="token" hidden />
             <input id="encoding" name="encoding" hidden />
         </div>
-        <div>
+        <div class="form">
             <label for="name">Name</label>
-            <input type="text" id="name" name="name" required />
+            <input type="text" id="name" name="name" class="input" required />
         </div>
-        <div>
+        <div class="button">
             <input type="submit" value="Create User!" />
         </div>
     </form>
@@ -44,7 +45,7 @@
                 form.addEventListener('submit', async function(e) {
                     // Get webpush data
                     e.preventDefault();
-                    
+
                     const subscription = await registration.pushManager.subscribe({
                         userVisibleOnly: true,
                         applicationServerKey: window.validPublicKey,

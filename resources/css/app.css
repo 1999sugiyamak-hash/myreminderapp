@@ -7,3 +7,57 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+.header {
+    text-align: center;
+    margin: 20px;
+    font-size: 25px;
+}
+
+.card {
+    margin: 10px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, .2);
+}
+
+.reminder {
+    padding: 10px;
+    box-shadow: 0 0 0px #D3E7F5;
+    color: #212121;
+    border-color: #A0D2F2;
+    border-width: 2px;
+    border-radius: 8px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.description, .remind_at, .location{
+    margin-left: 10px;
+}
+
+.button {
+    padding: 5px;
+    margin: 10px;
+    border-radius: 8px;
+    background-color: #A0D2F2;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.input {
+    border-color: #A0D2F2;
+    border-width: 2px;
+    border-radius: 8px;
+}

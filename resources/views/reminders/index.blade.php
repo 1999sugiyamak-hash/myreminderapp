@@ -1,17 +1,26 @@
 <!-- The view for reminders index -->
-@extends('layouts.app')
-<h1>All Reminders</h1>
+
+<head>
+    @vite('resources/css/app.css')
+    @extends('layouts.app')
+</head>
+<h1 class="header">All Reminders</h1>
 
 @foreach ($reminders as $reminder)
-    <div>
-    <h2>{{$reminder->title}}</h2>
-        <p>{{$reminder->description}}</p>
-        <p>{{$reminder->remind_at}}</p>
-        <div>
+<div class="card">
+    <div class="reminder">
+        <h2 class="title">{{$reminder->title}}</h2>
+        <p class="description">{{$reminder->description}}</p>
+        <p class="remind_at">remind at {{$reminder->remind_at}}</p>
+        @isset($reminder->latitude)
+        <p class="location">location reminder</p>
+        @endisset
+        <div class="button">
             <form method="POST" action="/reminders/complete/{{$reminder->id}}">
                 @method('PATCH')
                 <input type="submit" value="Complete!" />
             </form>
         </div>
     </div>
+</div>
 @endforeach
