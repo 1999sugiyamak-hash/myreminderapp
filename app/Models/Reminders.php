@@ -28,11 +28,11 @@ class Reminders extends Model
         'repeted'=>'boolean',
     ];
 
-    protected function createdUser(): BelongsTo{
+    public function createdUser(): BelongsTo{
         return $this->belongsTo(Users::class, 'created_user', 'id');
     }
 
-    protected function receivedUser(): BelongsTo{
-        return $this->belongsTo(Users::class, 'user_received_remainser', 'id');
+    public function receivedUser(): BelongsTo{
+        return $this->belongsTo(Users::class, 'user_received_reminder', 'id');
     }
 }

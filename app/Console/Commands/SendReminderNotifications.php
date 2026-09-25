@@ -19,18 +19,18 @@ class SendReminderNotifications extends Command
      */
     public function handle()
     {
-        $reminders = Reminders::where('remind_at', '!=', now("Asia/Tokyo"))
+        $reminders = Reminders::with('receivedUser')
+        ->where('remind_at', '=', now("Asia/Tokyo")->startOfMinute())
         ->where('completed', false)
         ->get();
 
-        // $notifications_serivce = new Notifications();
         foreach($reminders as $reminder){
             $this->info(
                 "Reminder: {$reminder->title} / {$reminder->remind_at}"
             );
             Log::Info("Success");
             $notifications_serivce = new Notifications();
-            return $notifications_serivce->send_notifications($reminder->title);
+            return $notifications_serivce->send_notifications($reminder->title, $reminder->receivedUser);
         }
 
         return Command::SUCCESS;
