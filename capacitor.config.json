@@ -1,0 +1,7 @@
+{
+  "appId": "com.example.myreminderapp",
+  "appName": "MyReminderApp",
+  "server": {
+    "url": "https://cedar-ons-having-cut.trycloudflare.com"
+  }
+}
