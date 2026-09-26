@@ -30,6 +30,10 @@
         <input type="datetime-local" id="remind_at" name="remind_at" class="input" />
     </div>
     <div class="form">
+        <label for="location_name">Location name</label>
+        <input type="text" id="location_name" name="location_name" class="input"/>
+    </div>
+    <div class="form">
         <label for="map">Map</label>
         <div id="map" style="height: 400px"></div>
         <input hidden id="latitude" name="latitude" />
