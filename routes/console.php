@@ -9,6 +9,6 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
 
-Schedule::command('app:send-reminder-notifications')
+Schedule::command('app:send-notifications-by-datetime')
 ->timezone('Asia/Tokyo')
 ->everyMinute();

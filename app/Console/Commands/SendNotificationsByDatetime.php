@@ -10,9 +10,9 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 use App\Services\Notifications;
 
-#[Signature('app:send-reminder-notifications')]
+#[Signature('app:send-notifications-by-datetime')]
 #[Description('Command description')]
-class SendReminderNotifications extends Command
+class SendNotificationsByDatetime extends Command
 {
     /**
      * Execute the console command.
