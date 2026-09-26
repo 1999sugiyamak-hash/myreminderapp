@@ -5,7 +5,12 @@
     @extends('layouts.app')
 </head>
 <h1 class="header">All Reminders</h1>
-
+<div class="button">
+    <button onclick="location.href='/reminders/create'">Let's Create Reminder!!</button>
+</div>
+<div class="button">
+    <button onclick="location.href='/users/create'">User Registration</button>
+</div>
 @foreach ($reminders as $reminder)
 <div class="card">
     <div class="reminder">

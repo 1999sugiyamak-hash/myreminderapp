@@ -12,7 +12,7 @@ class UsersController extends Controller
     // Return users index
     public function index()
     {
-        // return view('users');
+        return view('users.index');
     }
 
     // Return create users page
