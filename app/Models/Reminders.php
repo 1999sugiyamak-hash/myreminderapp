@@ -13,6 +13,7 @@ class Reminders extends Model
         'description',
         'user_received_reminder',
         'remind_at',
+        'location_name',
         'latitude',
         'longitude',
         'completed',
