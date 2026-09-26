@@ -16,9 +16,11 @@
     <div class="reminder">
         <h2 class="title">{{$reminder->title}}</h2>
         <p class="description">{{$reminder->description}}</p>
-        <p class="remind_at">remind at {{$reminder->remind_at}}</p>
-        @isset($reminder->latitude)
-        <p class="location">location reminder</p>
+        @isset($reminder->remind_at)
+        <p class="remind_at">Remind at {{$reminder->remind_at}}</p>
+        @endisset
+        @isset($reminder->location_name)
+        <p class="location">Remind when you are near {{$reminder->location_name}}</p>
         @endisset
         <div class="button">
             <form method="POST" action="/reminders/complete/{{$reminder->id}}">
