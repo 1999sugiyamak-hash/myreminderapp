@@ -1,7 +1,6 @@
 <!-- The view for reminders index -->
 
 <head>
-    @vite('resources/css/app.css')
     @extends('layouts.app')
 </head>
 <h1 class="header">All Reminders</h1>
@@ -27,7 +26,7 @@ $reminder_class = $reminder->reminded ? "reminded_reminder" : "reminder"
         <p class="location">Remind when you are near {{$reminder->location_name}}</p>
         @endisset
         <div class="button">
-            <form method="POST" action="/reminders/update/{{$reminder->id}}">
+            <form method="GET" action="/reminders/update/{{$reminder->id}}">
                 <input type="submit" value="Update datatime or location" />
             </form>
         </div>

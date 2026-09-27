@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Http\Controllers\ReminderController;
 use App\Models\Reminders;
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;

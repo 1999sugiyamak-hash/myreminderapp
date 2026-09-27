@@ -19,7 +19,7 @@ class LocationController extends Controller
                 'longitude' => ['required', 'numeric'],
             ]);
 
-            $reminders = Reminders::with('createdUser')
+            $reminders = Reminders::with('receivedUser')
                 ->where([['latitude', '!=', null], ['completed' , '=', false], ['reminded', '=', false]])
                 ->get();
 
@@ -37,7 +37,7 @@ class LocationController extends Controller
                     // Send notification if users exist less than 50m from destinations
                     if ($distance * 1000 <= 50) {
                         $notifications_serivce = new Notifications();
-                        return $notifications_serivce->send_notifications($reminder, $reminder->createdUser);
+                        return $notifications_serivce->send_notifications($reminder, $reminder->receivedUser);
                     }
                 }
             }

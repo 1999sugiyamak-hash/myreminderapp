@@ -1,12 +1,11 @@
 <!-- The view for creating reminders -->
 
 <head>
-    @vite (['resources/js/app.js', 'resources/css/app.css'])
+    @vite (['resources/js/app.js'])
     @extends('layouts.app')
     <script src="http://maps.google.com/maps/api/js?key={{ config( 'services.google_map.api_key' )}}&language=en" async defer></script>
 </head>
 <h1 class="header">Create Reminder</h1>
-<!-- TODO: enable resposible design -->
 <form method="POST" action="/reminders">
     @csrf
     <!-- <div>
