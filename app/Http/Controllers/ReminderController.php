@@ -44,7 +44,7 @@ class ReminderController extends Controller
             'longitude' => $validated['longitude'],
             'completed' => false,
             'repeated' => false,
-            'reminded'=>false,
+            'reminded' => false,
             'updated_at' => now(),
             'created_at'
         ]);
@@ -53,8 +53,46 @@ class ReminderController extends Controller
     }
 
     // Update reminder's completed flag to true
-    public function complete(int $id) {
+    public function complete(int $id)
+    {
         Reminders::where('id', $id)->update(['completed' => true]);
+
+        return redirect('/reminders');
+    }
+
+    // Display update reminder page
+    public function display_update_page(int $id)
+    {
+        $reminder = Reminders::find($id);
+        return view('reminders.update', compact('reminder'));
+    }
+
+    // Update reminders data
+    public function update(Request $request)
+    {
+            $validated = $request->validate([
+                'title' => 'required|string|max:255',
+                'description' => 'nullable|string',
+                'remind_at' => 'nullable|date',
+                'location_name' => 'nullable|string',
+                'latitude' => 'nullable|numeric|decimal:1,7',
+                'longitude' => 'nullable|numeric|decimal:1,7',
+            ]);
+
+            Reminders::where('id', $request['id'])->update([
+                'created_user' => 1, // TODO: create feature to select create user
+                'title' => $validated['title'],
+                'description' => $validated['description'],
+                'user_received_reminder' => 1, // TODO: create feature to select reminder received user
+                'remind_at' => $validated['remind_at'],
+                'location_name' => $validated['location_name'],
+                'latitude' => $validated['latitude'],
+                'longitude' => $validated['longitude'],
+                'completed' => false,
+                'repeated' => false,
+                'reminded' => false,
+                'updated_at' => now(),
+            ]);
 
         return redirect('/reminders');
     }
