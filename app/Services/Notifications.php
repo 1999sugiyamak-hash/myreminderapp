@@ -13,9 +13,6 @@ class Notifications
 
     public function send_notifications(Reminders $reminders, Users $user)
     {
-        // $user = Reminders::with('users')->where('id', $id)->get();
-        Log::info(config('services.web_push.public_key'));
-
         $subscription = Subscription::create([
             'endpoint' => $user->endpoint,
             'keys' => [
