@@ -27,6 +27,11 @@ $reminder_class = $reminder->reminded ? "reminded_reminder" : "reminder"
         <p class="location">Remind when you are near {{$reminder->location_name}}</p>
         @endisset
         <div class="button">
+            <form method="POST" action="/reminders/update/{{$reminder->id}}">
+                <input type="submit" value="Update datatime or location" />
+            </form>
+        </div>
+        <div class="button">
             <form method="POST" action="/reminders/complete/{{$reminder->id}}">
                 @method('PATCH')
                 <input type="submit" value="Complete!" />
