@@ -125,7 +125,7 @@ class LocationService : Service(){
         try{
             val url = java.net.URL(
 //                Mock implement
-                "https://cedar-ons-having-cut.trycloudflare.com/api/location"
+                "https://magic-caroline-bandwidth-clean.trycloudflare.com/api/location"
             )
 
             val connection = url.openConnection() as java.net.HttpURLConnection
@@ -148,8 +148,8 @@ class LocationService : Service(){
                 it.write(json.toByteArray())
             }
 
-            println(json)
-            println("Laravel response: ${connection.responseCode}")
+//            println(json)
+//            println("Laravel response: ${connection.responseCode}")
 
             connection.disconnect()
         } catch(e: Exception){
