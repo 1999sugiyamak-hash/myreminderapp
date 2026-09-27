@@ -30,6 +30,15 @@
     border-radius: 8px;
 }
 
+.reminded_reminder {
+    padding: 10px;
+    box-shadow: 0 0 0px #D3E7F5;
+    color: red;
+    border-color: #A0D2F2;
+    border-width: 2px;
+    border-radius: 8px;
+}
+
 .title {
     font-size: 20px;
     font-weight: bold;

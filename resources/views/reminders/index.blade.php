@@ -12,8 +12,12 @@
     <button onclick="location.href='/users/create'">User Registration</button>
 </div>
 @foreach ($reminders as $reminder)
+@php
+$reminder_class = $reminder->reminded ? "reminded_reminder" : "reminder"
+@endphp
+
 <div class="card">
-    <div class="reminder">
+    <div class={{$reminder_class}}>
         <h2 class="title">{{$reminder->title}}</h2>
         <p class="description">{{$reminder->description}}</p>
         @isset($reminder->remind_at)
