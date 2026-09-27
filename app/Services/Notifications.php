@@ -11,7 +11,7 @@ use Minishlink\WebPush\WebPush;
 class Notifications
 {
 
-    public function send_notifications(string $title, Users $user)
+    public function send_notifications(Reminders $reminders, Users $user)
     {
         // $user = Reminders::with('users')->where('id', $id)->get();
         Log::info(config('services.web_push.public_key'));
@@ -34,9 +34,10 @@ class Notifications
 
         $webPush = new WebPush($auth);
 
+        // TODO: Implement body to reminder description
         $payload = json_encode([
-            'title' => $title,
-            'body' => $title,
+            'title' => $reminders->title,
+            'body' => $reminders->title,
         ]);
 
         $report = $webPush -> sendOneNotification(
@@ -44,7 +45,9 @@ class Notifications
             $payload
         );
 
-        if(!$report->isSuccess()){
+        if($report->isSuccess()){
+            Reminders::where('id', $reminders->id)->update(['reminded' => true]);
+        }else{
             Log::error($report->getReason());
         }
 
