@@ -1,5 +1,5 @@
 
-function createMap() {
+async function createMap() {
     const center = {
         lat: 35.7379,
         lng: 139.6543,
@@ -8,7 +8,9 @@ function createMap() {
         zoom: 17,
         center: center,
     }
-    const map = new google.maps.Map(document.getElementById("map"), options);
+
+    const { Map } = await google.maps.importLibrary("maps");
+    const map = new Map(document.getElementById("map"), options);
 
     let marker = null;
     map.addListener('click', function (e) {
