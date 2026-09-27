@@ -19,7 +19,9 @@ class LocationController extends Controller
                 'longitude' => ['required', 'numeric'],
             ]);
 
-            $reminders = Reminders::with('createdUser')->where('latitude', '!=', null)->get();
+            $reminders = Reminders::with('createdUser')
+                ->where([['latitude', '!=', null], ['completed' , '=', false], ['reminded', '=', false]])
+                ->get();
 
             if ($reminders) {
                 foreach ($reminders as $reminder) {
@@ -33,7 +35,7 @@ class LocationController extends Controller
                     $distance = $EARTH_RAD * acos(sin($user_y) * sin($reminder_y) + cos($user_y) * cos($reminder_y) * cos($reminder_x - $user_x));
 
                     // Send notification if users exist less than 50m from destinations
-                    if ($distance <= 50) {
+                    if ($distance * 1000 <= 50) {
                         $notifications_serivce = new Notifications();
                         return $notifications_serivce->send_notifications($reminder, $reminder->createdUser);
                     }
@@ -48,16 +50,4 @@ class LocationController extends Controller
             Log::error($message);
         }
     }
-
-    // private function calculate_distance(Float $user_x, Float $user_y, Float $reminder_x, Float $reminder_y)
-    // {
-    //     $EARTH_RAD = 6378.137;
-
-    //     return $EARTH_RAD * acos(sin($user_y) * sin($reminder_y) + cos($user_y) * cos($reminder_y) * cos($reminder_x - $user_x));
-    // }
-
-    // private function deg2rad(Float $deg)
-    // {
-    //     return $deg * M_PI / 180.0;
-    // }
 }
