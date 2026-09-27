@@ -30,7 +30,7 @@ class SendNotificationsByDatetime extends Command
             );
             Log::Info("Success");
             $notifications_serivce = new Notifications();
-            return $notifications_serivce->send_notifications($reminder->title, $reminder->receivedUser);
+            return $notifications_serivce->send_notifications($reminder, $reminder->receivedUser);
         }
 
         return Command::SUCCESS;

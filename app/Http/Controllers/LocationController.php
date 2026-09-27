@@ -35,7 +35,7 @@ class LocationController extends Controller
                     // Send notification if users exist less than 50m from destinations
                     if ($distance <= 50) {
                         $notifications_serivce = new Notifications();
-                        return $notifications_serivce->send_notifications($reminder->title, $reminder->createdUser);
+                        return $notifications_serivce->send_notifications($reminder, $reminder->createdUser);
                     }
                 }
             }

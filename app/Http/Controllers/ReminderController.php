@@ -44,6 +44,7 @@ class ReminderController extends Controller
             'longitude' => $validated['longitude'],
             'completed' => false,
             'repeated' => false,
+            'reminded'=>false,
             'updated_at' => now(),
             'created_at'
         ]);
