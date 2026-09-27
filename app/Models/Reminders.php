@@ -18,6 +18,7 @@ class Reminders extends Model
         'longitude',
         'completed',
         'repeted',
+        'reminded',
     ];
 
     // Specify property
@@ -27,6 +28,7 @@ class Reminders extends Model
         'longitude'=>'decimal:7',
         'completed'=>'boolean',
         'repeted'=>'boolean',
+        'reminded'=>'boolean'
     ];
 
     public function createdUser(): BelongsTo{
