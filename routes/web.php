@@ -22,10 +22,10 @@ Route::post('/reminders', [ReminderController::class, 'store']);
 Route::patch('/reminders/complete/{id}', [ReminderController::class, 'complete']);
 
 // Post update reminders data and display update page
-Route::post('/reminders/update/{id}', [ReminderController::class, 'display_update_page']);
+Route::get('/reminders/update/{id}', [ReminderController::class, 'display_update_page']);
 
 // Update reminders data
-Route::post('/reminders/update', [ReminderController::class, 'update']);
+Route::put('/reminders/update', [ReminderController::class, 'update']);
 
 
 // Users

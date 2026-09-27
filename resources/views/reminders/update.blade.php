@@ -8,6 +8,7 @@
 <h1 class="header">Update Reminder</h1>
 <form method="POST" action="/reminders/update">
     @csrf
+    @method('PUT')
     <!-- <div>
         <label for="created_user">Name</label>
         <input type="text" id="created_user" name="created_user" required />
@@ -17,12 +18,9 @@
         <label for="title">Reminder title</label>
         <input type="text" id="title" name="title" class="input" value="{{$reminder->title}}" required />
     </div>
-    @php
-    $description = $reminder->descriotion ? $reminder->descriotion : "";
-    @endphp
     <div class="form">
         <label for="description">Description</label>
-        <textarea id="description" name="description" class="input" value=$description></textarea>
+        <textarea id="description" name="description" class="input"></textarea>
     </div>
     <!-- <div>
         <label for="user_received_reminder">Name received reminder</label>
