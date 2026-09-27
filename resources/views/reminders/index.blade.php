@@ -1,7 +1,6 @@
 <!-- The view for reminders index -->
 
 <head>
-    @vite('resources/css/app.css')
     @extends('layouts.app')
 </head>
 <h1 class="header">All Reminders</h1>

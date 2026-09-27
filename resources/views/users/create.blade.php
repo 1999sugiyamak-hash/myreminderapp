@@ -1,7 +1,6 @@
 <!-- The view for creating users -->
 
 <head>
-    @vite(['resources/css/app.css'])
     @extends('layouts.app')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script>
@@ -11,7 +10,6 @@
 
 <body>
     <h1 class="header">Create User</h1>
-    <!-- TODO: enable resposible design -->
     <form method="POST" action="/users" id="create-user-form">
         @csrf
         <div>
