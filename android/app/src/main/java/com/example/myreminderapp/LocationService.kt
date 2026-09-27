@@ -11,7 +11,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.IBinder
 import android.os.Looper
-import androidx.camera.camera2.pipe.core.Log
+//import androidx.camera.camera2.pipe.core.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import com.google.android.gms.location.*;
@@ -125,7 +125,7 @@ class LocationService : Service(){
         try{
             val url = java.net.URL(
 //                Mock implement
-                "https://magic-caroline-bandwidth-clean.trycloudflare.com/api/location"
+                "https://myreminderapp-production-1ogwkb.laravel.cloud/api/location"
             )
 
             val connection = url.openConnection() as java.net.HttpURLConnection
