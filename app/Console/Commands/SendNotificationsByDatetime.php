@@ -20,11 +20,10 @@ class SendNotificationsByDatetime extends Command
     public function handle()
     {
         $reminders = Reminders::with('receivedUser')
-        ->where('remind_at', '=', now("Asia/Tokyo")->startOfMinute())
-        ->where('completed', false)
-        ->get();
+            ->where([['remind_at', '=', now("Asia/Tokyo")->startOfMinute()], ['completed', '=', false], ['reminded', '=', false]])
+            ->get();
 
-        foreach($reminders as $reminder){
+        foreach ($reminders as $reminder) {
             $this->info(
                 "Reminder: {$reminder->title} / {$reminder->remind_at}"
             );

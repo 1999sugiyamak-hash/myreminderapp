@@ -34,10 +34,9 @@ class Notifications
 
         $webPush = new WebPush($auth);
 
-        // TODO: Implement body to reminder description
         $payload = json_encode([
             'title' => $reminders->title,
-            'body' => $reminders->title,
+            'body' => $reminders->description ? $reminders->description : $reminders->title,
         ]);
 
         $report = $webPush -> sendOneNotification(
@@ -47,6 +46,7 @@ class Notifications
 
         if($report->isSuccess()){
             Reminders::where('id', $reminders->id)->update(['reminded' => true]);
+            Log::info($report);
         }else{
             Log::error($report->getReason());
         }
