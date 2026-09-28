@@ -18,15 +18,16 @@ import com.google.android.gms.location.*;
 
 class LocationService : Service(){
 // Init API to get current location
-    private lateinit var fusedLoationClient: FusedLocationProviderClient
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 // Build API
-    private val locationRequest = (
-        LocationRequest.Builder(
-            Priority.PRIORITY_HIGH_ACCURACY,
-            3_000
-        )
-            .setMinUpdateIntervalMillis(1_000)
-            .build()
+private val locationRequest = (
+    LocationRequest.Builder(
+        Priority.PRIORITY_HIGH_ACCURACY,
+        10_000
+    )
+        .setMinUpdateIntervalMillis(5_000)
+        .setMinUpdateDistanceMeters(5f)
+        .build()
     )
 
 // Send current location to laravel
@@ -61,7 +62,7 @@ class LocationService : Service(){
         )
 
         // Execute API to get location
-        fusedLoationClient = LocationServices.getFusedLocationProviderClient(this)
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         startLocationUpdates()
     }
@@ -113,7 +114,7 @@ class LocationService : Service(){
             return
         }
 
-        fusedLoationClient.requestLocationUpdates(
+        fusedLocationClient.requestLocationUpdates(
             locationRequest,
             locationCallback,
             Looper.getMainLooper()
@@ -148,8 +149,8 @@ class LocationService : Service(){
                 it.write(json.toByteArray())
             }
 
-//            println(json)
-//            println("Laravel response: ${connection.responseCode}")
+            println(json)
+            println("Laravel response: ${connection.responseCode}")
 
             connection.disconnect()
         } catch(e: Exception){
