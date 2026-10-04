@@ -1,10 +1,12 @@
 <!-- The view for creating reminders -->
+@extends('layouts.app')
 
-<head>
+@section('head')
     @vite (['resources/js/app.js'])
-    @extends('layouts.app')
     <script src="http://maps.google.com/maps/api/js?key={{ config( 'services.google_map.api_key' )}}&loading=async&language=en" async defer></script>
-</head>
+@endsection
+
+@section('body')
 <h1 class="header">Update Reminder</h1>
 <form method="POST" action="/reminders/update">
     @csrf
@@ -44,3 +46,4 @@
         <input type="submit" value="Update reminder!" class="button"/>
     </div>
 </form>
+@endsection
