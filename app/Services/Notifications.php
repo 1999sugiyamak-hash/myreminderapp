@@ -34,6 +34,7 @@ class Notifications
         $payload = json_encode([
             'title' => $reminders->title,
             'body' => $reminders->description ? $reminders->description : $reminders->title,
+            'icon' => '/images/image_notification.png'
         ]);
 
         $report = $webPush -> sendOneNotification(
