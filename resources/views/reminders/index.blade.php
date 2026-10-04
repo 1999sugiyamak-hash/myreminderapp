@@ -4,11 +4,11 @@
     @extends('layouts.app')
 </head>
 <h1 class="header">All Reminders</h1>
-<div class="button">
-    <button onclick="location.href='/reminders/create'">Let's Create Reminder!!</button>
+<div>
+    <button onclick="location.href='/reminders/create'" class="button">Let's Create Reminder!!</button>
 </div>
-<div class="button">
-    <button onclick="location.href='/users/create'">User Registration</button>
+<div>
+    <button onclick="location.href='/users/create'" class="button">User Registration</button>
 </div>
 @foreach ($reminders as $reminder)
 @php
@@ -25,15 +25,15 @@ $reminder_class = $reminder->reminded ? "reminded_reminder" : "reminder"
         @isset($reminder->location_name)
         <p class="location">Remind when you are near {{$reminder->location_name}}</p>
         @endisset
-        <div class="button">
+        <div>
             <form method="GET" action="/reminders/update/{{$reminder->id}}">
-                <input type="submit" value="Update datatime or location" />
+                <input type="submit" value="Update datatime or location" class="button"/>
             </form>
         </div>
-        <div class="button">
+        <div>
             <form method="POST" action="/reminders/complete/{{$reminder->id}}">
                 @method('PATCH')
-                <input type="submit" value="Complete!" />
+                <input type="submit" value="Complete!" class="button"/>
             </form>
         </div>
     </div>

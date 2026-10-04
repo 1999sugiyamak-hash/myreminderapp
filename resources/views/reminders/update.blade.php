@@ -40,7 +40,7 @@
         <input hidden id="latitude" name="latitude" />
         <input hidden id="longitude" name="longitude" />
     </div>
-    <div class="button">
-        <input type="submit" value="Update reminder!" />
+    <div>
+        <input type="submit" value="Update reminder!" class="button"/>
     </div>
 </form>
