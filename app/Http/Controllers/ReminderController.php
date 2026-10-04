@@ -32,6 +32,11 @@ class ReminderController extends Controller
             'latitude' => 'nullable|numeric|decimal:1,7',
             'longitude' => 'nullable|numeric|decimal:1,7',
         ]);
+        
+        $repeated = false;
+        if($request['repeated'] == "repeated") {
+            $repeated = true;
+        }
 
         Reminders::create([
             'created_user' => 1, // TODO: create feature to select create user
@@ -43,7 +48,7 @@ class ReminderController extends Controller
             'latitude' => $validated['latitude'],
             'longitude' => $validated['longitude'],
             'completed' => false,
-            'repeated' => false,
+            'repeated' => $repeated,
             'reminded' => false,
             'updated_at' => now(),
             'created_at'
@@ -79,6 +84,11 @@ class ReminderController extends Controller
                 'longitude' => 'nullable|numeric|decimal:1,7',
             ]);
 
+            $repeated = false;
+            if($request['repeated'] == "repeated") {
+                $repeated = true;
+            }
+
             Reminders::where('id', $request['id'])->update([
                 'created_user' => 1, // TODO: create feature to select create user
                 'title' => $validated['title'],
@@ -89,7 +99,7 @@ class ReminderController extends Controller
                 'latitude' => $validated['latitude'],
                 'longitude' => $validated['longitude'],
                 'completed' => false,
-                'repeated' => false,
+                'repeated' => $repeated,
                 'reminded' => false,
                 'updated_at' => now(),
             ]);

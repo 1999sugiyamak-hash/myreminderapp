@@ -32,6 +32,11 @@
         <input type="datetime-local" id="remind_at" name="remind_at" class="input" />
     </div>
     <div class="form">
+        <label for="repeated">
+            <input type="checkbox" id="repeated" name="repeated" value="repeated"> Daily reminder?
+        </label>
+    </div>
+    <div class="form">
         <label for="location_name">Location name</label>
         <input type="text" id="location_name" name="location_name" class="input"/>
     </div>
