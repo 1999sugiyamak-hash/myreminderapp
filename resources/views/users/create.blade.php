@@ -1,14 +1,14 @@
 <!-- The view for creating users -->
+@extends('layouts.app')
 
-<head>
-    @extends('layouts.app')
+@section('head')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script>
         window.validPublicKey = "{{ config('services.web_push.public_key') }}";
     </script>
-</head>
+@endsection
 
-<body>
+@section('body')
     <h1 class="header">Create User</h1>
     <form method="POST" action="/users" id="create-user-form">
         @csrf
@@ -66,4 +66,4 @@
 
         registerUser();
     </script>
-</body>
+@endsection

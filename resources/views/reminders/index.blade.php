@@ -1,14 +1,13 @@
 <!-- The view for reminders index -->
+@extends('layouts.app')
 
-<head>
-    @extends('layouts.app')
-</head>
+@section('body')
 <h1 class="header">All Reminders</h1>
-<div class="button">
-    <button onclick="location.href='/reminders/create'">Let's Create Reminder!!</button>
+<div>
+    <button onclick="location.href='/reminders/create'" class="button">Let's Create Reminder!!</button>
 </div>
-<div class="button">
-    <button onclick="location.href='/users/create'">User Registration</button>
+<div>
+    <button onclick="location.href='/users/create'" class="button">User Registration</button>
 </div>
 @foreach ($reminders as $reminder)
 @php
@@ -27,15 +26,16 @@ $reminder_class = $reminder->reminded ? "reminded_reminder" : "reminder"
         @endisset
         <div>
             <form method="GET" action="/reminders/update/{{$reminder->id}}">
-                <input type="submit" value="Update datatime or location" class="button"/>
+                <input type="submit" value="Update datatime or location" class="button" />
             </form>
         </div>
         <div>
             <form method="POST" action="/reminders/complete/{{$reminder->id}}">
                 @method('PATCH')
-                <input type="submit" value="Complete!" class="button"/>
+                <input type="submit" value="Complete!" class="button" />
             </form>
         </div>
     </div>
 </div>
 @endforeach
+@endsection
