@@ -3,6 +3,6 @@
 <head>
     @extends('layouts.app')
 </head>
-<div class="button" style="margin-top: 100px;">
-    <button onclick="location.href='/reminders/create'">Let's Create Reminder!!</button>
+<div style="margin-top: 100px;">
+    <button onclick="location.href='/reminders/create'" class="button">Let's Create Reminder!!</button>
 </div>
