@@ -14,7 +14,6 @@ class LocationController extends Controller
     public function check(Request $request)
     {
         try {
-            Log::info("Location Rerceived");
             $user = $request->validate([
                 'latitude' => ['required', 'numeric'],
                 'longitude' => ['required', 'numeric'],
