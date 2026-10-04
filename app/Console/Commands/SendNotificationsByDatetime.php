@@ -18,9 +18,18 @@ class SendNotificationsByDatetime extends Command
      */
     public function handle()
     {
-        $reminders = Reminders::with('receivedUser')
+        $datetime_reminders = Reminders::with('receivedUser')
             ->where([['remind_at', '=', now("Asia/Tokyo")->startOfMinute()], ['completed', '=', false], ['reminded', '=', false]])
             ->get();
+
+        // Search dailt reminders to match current time(H:i)
+        $current_time = now("Asia/Tokyo")->format('H:i');
+        $daily_reminders = Reminders::with('receivedUser')
+        ->where([['repeated', '=', true], ['completed', '=', false], ['reminded', '=', false]])
+        ->whereRaw("DATE_FORMAT(remind_at, '%H:%i') =? ", $current_time)
+        ->get();
+
+        $reminders = $datetime_reminders->merge($daily_reminders);
 
         foreach ($reminders as $reminder) {
             $this->info(
