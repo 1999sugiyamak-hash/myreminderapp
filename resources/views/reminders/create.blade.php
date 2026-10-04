@@ -1,10 +1,13 @@
 <!-- The view for creating reminders -->
 
-<head>
+@extends('layouts.app')
+
+@section('head')
     @vite (['resources/js/app.js'])
-    @extends('layouts.app')
     <script src="http://maps.google.com/maps/api/js?key={{ config( 'services.google_map.api_key' )}}&loading=async&language=en" async defer></script>
-</head>
+@endsection
+
+@section('body')
 <h1 class="header">Create Reminder</h1>
 <form method="POST" action="/reminders">
     @csrf
@@ -29,6 +32,11 @@
         <input type="datetime-local" id="remind_at" name="remind_at" class="input" />
     </div>
     <div class="form">
+        <label for="repeated">
+            <input type="checkbox" id="repeated" name="repeated" value="repeated"> Daily reminder?
+        </label>
+    </div>
+    <div class="form">
         <label for="location_name">Location name</label>
         <input type="text" id="location_name" name="location_name" class="input"/>
     </div>
@@ -42,3 +50,4 @@
         <input type="submit" value="Create reminder!" class="button"/>
     </div>
 </form>
+@endsection

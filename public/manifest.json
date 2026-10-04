@@ -1,0 +1,20 @@
+{
+    "name": "MyReminderApp",
+    "short_name": "reminder",
+    "start_url": "./reminders",
+    "display": "standalone",
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "icons": [
+        {
+            "src": "images/icon_192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "images/icon_512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

@@ -6,6 +6,7 @@ self.addEventListener('push', function(e){
     e.waitUntil(
         self.registration.showNotification(data.title, {
             body: data.body || data.title,
+            icon: data.icon
         })
     )
 })

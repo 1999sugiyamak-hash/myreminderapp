@@ -17,7 +17,7 @@ class Reminders extends Model
         'latitude',
         'longitude',
         'completed',
-        'repeted',
+        'repeated',
         'reminded',
     ];
 
@@ -27,7 +27,7 @@ class Reminders extends Model
         'latitude'=>'decimal:7',
         'longitude'=>'decimal:7',
         'completed'=>'boolean',
-        'repeted'=>'boolean',
+        'repeated'=>'boolean',
         'reminded'=>'boolean'
     ];
 

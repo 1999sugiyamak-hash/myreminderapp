@@ -34,19 +34,22 @@ class Notifications
         $payload = json_encode([
             'title' => $reminders->title,
             'body' => $reminders->description ? $reminders->description : $reminders->title,
+            'icon' => '/images/image_notification.png'
         ]);
 
-        $report = $webPush -> sendOneNotification(
+
+        $report = $webPush->sendOneNotification(
             $subscription,
             $payload
         );
 
-        if($report->isSuccess()){
-            Reminders::where('id', $reminders->id)->update(['reminded' => true]);
-            Log::info($report);
-        }else{
+
+        if ($report->isSuccess()) {
+            if ($reminders->repeated == false) {
+                Reminders::where('id', $reminders->id)->update(['reminded' => true]);
+            }
+        } else {
             Log::error($report->getReason());
         }
-
     }
 }
