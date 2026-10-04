@@ -24,6 +24,9 @@ $reminder_class = $reminder->reminded ? "reminded_reminder" : "reminder"
         @isset($reminder->location_name)
         <p class="location">Remind when you are near {{$reminder->location_name}}</p>
         @endisset
+        @if($reminder->repeated == true)
+        <p class="repeated">Daily reminder</p>
+        @endif
         <div>
             <form method="GET" action="/reminders/update/{{$reminder->id}}">
                 <input type="submit" value="Update datatime or location" class="button" />
