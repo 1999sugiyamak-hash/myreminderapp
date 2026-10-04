@@ -22,8 +22,8 @@
             <label for="name">Name</label>
             <input type="text" id="name" name="name" class="input" required />
         </div>
-        <div class="button">
-            <input type="submit" value="Create User!" />
+        <div>
+            <input type="submit" value="Create User!" class="button"/>
         </div>
     </form>
     <script>

@@ -2,6 +2,6 @@
   "appId": "com.example.myreminderapp",
   "appName": "MyReminderApp",
   "server": {
-    "url": "https://cedar-ons-having-cut.trycloudflare.com"
+    "url": "https://myreminderapp-production-1ogwkb.laravel.cloud"
   }
 }

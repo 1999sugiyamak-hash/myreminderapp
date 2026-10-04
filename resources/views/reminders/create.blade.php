@@ -3,7 +3,7 @@
 <head>
     @vite (['resources/js/app.js'])
     @extends('layouts.app')
-    <script src="http://maps.google.com/maps/api/js?key={{ config( 'services.google_map.api_key' )}}&language=en" async defer></script>
+    <script src="http://maps.google.com/maps/api/js?key={{ config( 'services.google_map.api_key' )}}&loading=async&language=en" async defer></script>
 </head>
 <h1 class="header">Create Reminder</h1>
 <form method="POST" action="/reminders">
@@ -38,7 +38,7 @@
         <input hidden id="latitude" name="latitude" />
         <input hidden id="longitude" name="longitude" />
     </div>
-    <div class="button">
-        <input type="submit" value="Create reminder!" />
+    <div>
+        <input type="submit" value="Create reminder!" class="button"/>
     </div>
 </form>
