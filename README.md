@@ -21,3 +21,7 @@
 ### Phase 1
 <p>Deployed on 27th, Sep. </p>
 <p>Only 1 user be allowed to use it. This is because I did not create the feature to identify whose location they are with android side.</p>
+
+### Phase 2
+<p>Deployed on 4th, Oct. </p>
+<p>Added daily reminder feature and enabled user to push button on non-text area. </p>
